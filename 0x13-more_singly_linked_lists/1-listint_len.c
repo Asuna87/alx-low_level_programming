@@ -17,6 +17,6 @@ current = current->next;
 element_count++;
 }
 
-return element_count;
+return (element_count);
 }
 
