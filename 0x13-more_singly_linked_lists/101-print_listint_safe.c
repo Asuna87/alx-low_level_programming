@@ -54,9 +54,12 @@ return (0);
 /**
 * print_listint_safe - Safely prints a listint_t list.
 * @head: A pointer to the head of the listint_t list.
-* This function safely prints a listint_t linked list, handling cases where the list contains a loop.
-* If the list is not looped, it prints the entire list. If the list is looped, it prints the list up to
-* the beginning of the loop, then separately prints the node where the loop starts.
+* This function safely prints a listint_t linked list,
+* handling cases where the list contains a loop.
+* If the list is not looped, it prints the entire list.
+* If the list is looped, it prints the list up to
+* the beginning of the loop, then separately prints the
+* node where the loop starts.
 * Return: The count of nodes in the list.
 */
 size_t print_listint_safe(const listint_t *head)
@@ -87,3 +90,4 @@ printf("-> [%p] %d\n", (void *)head, head->n);
 
 return (nodes);
 }
+
