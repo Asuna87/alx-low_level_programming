@@ -12,8 +12,9 @@ static int count_words(char *str)
 {
 int count = 0;
 bool in_word = false;
+int i;
 
-for (int i = 0; str[i] != '\0'; i++)
+for (i = 0; str[i] != '\0'; i++)
 {
 if (!is_delimiter(str[i]))
 {
@@ -36,6 +37,7 @@ static char **allocate_words(char *str, int word_count)
 {
 char **words;
 int word_length;
+int j;
 int i = 0;
 
 words = malloc((word_count + 1) * sizeof(char *));
@@ -53,13 +55,13 @@ word_length++;
 words[i] = malloc((word_length + 1) * sizeof(char));
 if (words[i] == NULL)
 {
-for (int j = 0; j < i; j++)
+for (j = 0; j < i; j++)
 free(words[j]);
 free(words);
 return (NULL);
 }
 
-for (int j = 0; j < word_length; j++)
+for (j = 0; j < word_length; j++)
 words[i][j] = str[j];
 words[i][word_length] = '\0';
 
