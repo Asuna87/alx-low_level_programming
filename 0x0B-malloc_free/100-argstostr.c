@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -6,13 +7,16 @@
 * @ac: argument count
 * @av: argument vector (array of strings)
 *
-* Return: pointer to a newly allocated string containing concatenated arguments
-*         separated by newlines, or NULL on failure
+* Return: pointer to a new string containing concatenated arguments,
+*         separated by newlines, or NULL if it fails
 */
 char *argstostr(int ac, char **av)
 {
-char *concatenated;
-int i, j, total_length = 0, index = 0;
+if (ac <= 0 || av == NULL)
+return (NULL);
+
+int total_length = 0;
+int i, j, index = 0;
 
 /* Calculate the total length of all arguments */
 for (i = 0; i < ac; i++)
@@ -23,7 +27,7 @@ total_length++; /* for newline character after each argument */
 }
 
 /* Allocate memory for the concatenated string (+1 for null terminator) */
-concatenated = malloc(total_length *sizeof(char) + 1);
+char *concatenated = malloc(total_length + 1);
 
 if (concatenated == NULL)
 return (NULL);
