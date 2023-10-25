@@ -5,7 +5,8 @@
 * _strdup - duplicates a string using malloc
 * @str: input string to duplicate
 *
-* Return: pointer to the newly allocated duplicate string, or NULL if str is NULL
+* Return: pointer to the newly allocated duplicate
+* string, or NULL if str is NULL
 */
 char *_strdup(char *str)
 {
