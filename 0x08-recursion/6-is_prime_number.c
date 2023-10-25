@@ -10,10 +10,9 @@
 */
 int is_prime_helper(int n, int divisor)
 {
-/**
-* Base cases: if divisor exceeds half of n,
-* or n is divisible by divisor, return appropriate values
-*/
+/*Base cases: if divisor exceeds half of n,*/
+/* or n is divisible by divisor, return appropriate values*/
+
 if (divisor > n / 2)
 return (1); /* n is prime */
 
