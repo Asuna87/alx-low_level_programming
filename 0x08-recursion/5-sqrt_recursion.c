@@ -10,10 +10,6 @@
 */
 int find_sqrt(int n, int guess)
 {
-/**
-* Base cases: if guess^2 exceeds n, or guess^2
-* equals n, return appropriate values
-*/
 if (guess * guess > n)
 return (-1); /* Error: n does not have a natural square root */
 
