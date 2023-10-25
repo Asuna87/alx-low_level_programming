@@ -4,11 +4,15 @@
 
 char *argstostr(int ac, char **av)
 {
+int total_length;
+int i, j;
+char *concatenated;
+int index;
+
+total_length = 0;
 if (ac <= 0 || av == NULL)
 return (NULL);
 
-int total_length = 0;
-int i, j;
 
 for (i = 0; i < ac; i++)
 {
@@ -17,12 +21,12 @@ total_length++;
 total_length++; /* for newline character after each argument */
 }
 
-char *concatenated;
+
 concatenated = malloc(total_length + 1);
 if (concatenated == NULL)
 return (NULL);
 
-int index = 0;
+index = 0;
 for (i = 0; i < ac; i++)
 {
 for (j = 0; av[i][j] != '\0'; j++)
