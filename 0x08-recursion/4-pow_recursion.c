@@ -11,12 +11,12 @@
 int _pow_recursion(int x, int y)
 {
 /* Base cases: x^0 is 1, x^1 is x */
-if (y < 0) {
+if (y < 0)
 return (-1); /* Error: power of negative exponent is undefined */
-}
-if (y == 0) {
+
+if (y == 0)
 return (1);
-}
+
 return (x * _pow_recursion(x, y - 1)); /* Recur with the reduced exponent */
 }
 

@@ -10,7 +10,8 @@
 void _puts_recursion(char *s)
 {
 /* Base case: if the current character is null terminator, print newline */
-if (*s == '\0') {
+if (*s == '\0')
+{
 putchar('\n');
 return;
 }

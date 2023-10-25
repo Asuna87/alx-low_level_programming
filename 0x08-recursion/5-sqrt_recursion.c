@@ -5,18 +5,23 @@
 * @n: The number to find the square root of.
 * @guess: The current guess for the square root.
 * Return: Square root of n, -1 if n does not have a natural square root.
-* Description: This function uses recursion to find the natural square root of `n`.
+* Description: This function uses recursion to
+* find the natural square root of `n`.
 */
 int find_sqrt(int n, int guess)
 {
-/* Base cases: if guess^2 exceeds n, or guess^2 equals n, return appropriate values */
-if (guess * guess > n) {
+/**
+* Base cases: if guess^2 exceeds n, or guess^2
+* equals n, return appropriate values
+*/
+if (guess * guess > n)
 return (-1); /* Error: n does not have a natural square root */
-}
-if (guess * guess == n) {
+
+if (guess * guess == n)
 return (guess);
-}
-return (find_sqrt(n, guess + 1)); /* Recur with the next guess for square root */
+
+return (find_sqrt(n, guess + 1));
+/* Recur with the next guess for square root */
 }
 
 /**
@@ -28,6 +33,7 @@ return (find_sqrt(n, guess + 1)); /* Recur with the next guess for square root *
 */
 int _sqrt_recursion(int n)
 {
-return (find_sqrt(n, 1)); /* Start finding square root with initial guess of 1 */
+return (find_sqrt(n, 1));
+/* Start finding square root with initial guess of 1 */
 }
 

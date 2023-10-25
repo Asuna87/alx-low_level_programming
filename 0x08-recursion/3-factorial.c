@@ -10,12 +10,13 @@
 int factorial(int n)
 {
 /* Base cases: factorial of 0 and 1 is 1 */
-if (n < 0) {
+if (n < 0)
 return (-1); /* Error: factorial of negative number is undefined */
-}
-if (n == 0 || n == 1) {
+
+if (n == 0 || n == 1)
 return (1);
-}
-return (n * factorial(n - 1)); /* Recur with the previous number in the factorial sequence */
+
+return (n * factorial(n - 1));
+/* Recur with the previous number in the factorial sequence */
 }
 
