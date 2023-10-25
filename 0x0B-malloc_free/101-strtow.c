@@ -1,15 +1,19 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
+/**
+* count_words - Count the number of words in a string.
+* @str: The input string.
+*
+* Return: Number of words in the string.
+*/
 static int count_words(char *str)
 {
 int count = 0;
 bool in_word = false;
-int i;
 
-for (i = 0; str[i] != '\0'; i++)
+for (int i = 0; str[i] != '\0'; i++)
 {
 if (str[i] == ' ')
 {
@@ -31,10 +35,17 @@ count++;
 return (count);
 }
 
+/**
+* allocate_words - Allocate memory for words in the string.
+* @str: The input string.
+* @word_count: Number of words in the string.
+*
+* Return: Pointer to the allocated array of words, or NULL on failure.
+*/
 static char **allocate_words(char *str, int word_count)
 {
 char **words;
-int i,j;
+int i, j;
 int word_length;
 
 words = malloc((word_count + 1) * sizeof(char *));
@@ -67,6 +78,11 @@ words[i] = NULL;
 return (words);
 }
 
+/**
+* fill_words - Fill the allocated words with characters from the input string.
+* @str: The input string.
+* @words: The array of words to be filled.
+*/
 static void fill_words(char *str, char **words)
 {
 int i;
@@ -91,6 +107,12 @@ i++;
 }
 }
 
+/**
+* strtow - Split a string into words.
+* @str: The input string.
+*
+* Return: Pointer to an array of words, or NULL on failure.
+*/
 char **strtow(char *str)
 {
 int word_count;
@@ -103,10 +125,11 @@ word_count = count_words(str);
 if (word_count == 0)
 return (NULL);
 
-**words = allocate_words(str, word_count);
+words = allocate_words(str, word_count);
 if (words == NULL)
 return (NULL);
 
 fill_words(str, words);
 return (words);
 }
+
