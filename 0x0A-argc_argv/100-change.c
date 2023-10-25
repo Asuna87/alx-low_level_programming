@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calculate_coins(int cents, int coin_value);
-
 /**
 * main - Entry point, prints the minimum number of coins to make change
 * for a given amount of money.
 * @argc: Number of command line arguments
 * @argv: Array containing the command line arguments
+*
 * Return: 0 if successful, 1 if incorrect number of arguments or negative input
 */
 int main(int argc, char *argv[])
@@ -29,34 +28,17 @@ printf("0\n");
 return (0);
 }
 
-coins += calculate_coins(cents, 25);
-coins += calculate_coins(cents, 10);
-coins += calculate_coins(cents, 5);
-coins += calculate_coins(cents, 2);
-coins += calculate_coins(cents, 1);
+coins += cents / 25;
+cents %= 25;
+coins += cents / 10;
+cents %= 10;
+coins += cents / 5;
+cents %= 5;
+coins += cents / 2;
+cents %= 2;
+coins += cents;
 
 printf("%d\n", coins);
 return (0);
-}
-
-/**
-* calculate_coins - Helper function to calculate
-* the number of coins of a given value
-* @cents: Remaining cents to make change for
-* @coin_value: Value of the coin (25, 10, 5, 2, or 1)
-*
-* Return: Number of coins of the given value that can be used
-*/
-int calculate_coins(int cents, int coin_value)
-{
-int coins = 0;
-
-while (cents >= coin_value)
-{
-cents -= coin_value;
-coins++;
-}
-
-return (coins);
 }
 
