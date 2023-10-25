@@ -1,119 +1,76 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
-/**
-* count_words - Count the number of words in a string.
-* @str: The input string.
-*
-* Return: Number of words in the string.
-*/
+static bool is_delimiter(char c)
+{
+return (c == ' ' || c == '\t' || c == '\n');
+}
+
 static int count_words(char *str)
 {
 int count = 0;
 bool in_word = false;
-int i;
 
-for (i = 0; str[i] != '\0'; i++)
+for (int i = 0; str[i] != '\0'; i++)
 {
-if (str[i] == ' ')
+if (!is_delimiter(str[i]))
 {
-if (in_word)
+if (!in_word)
 {
-in_word = false;
+in_word = true;
 count++;
 }
 }
 else
 {
-in_word = true;
+in_word = false;
 }
 }
-
-if (in_word)
-count++;
 
 return (count);
 }
 
-/**
-* allocate_words - Allocate memory for words in the string.
-* @str: The input string.
-* @word_count: Number of words in the string.
-*
-* Return: Pointer to the allocated array of words, or NULL on failure.
-*/
 static char **allocate_words(char *str, int word_count)
 {
 char **words;
-int i, j;
 int word_length;
+int i = 0;
 
 words = malloc((word_count + 1) * sizeof(char *));
 if (words == NULL)
 return (NULL);
 
-for (i = 0; i < word_count; i++)
+while (*str != '\0')
 {
-while (*str == ' ')
+while (is_delimiter(*str))
 str++;
-
 word_length = 0;
-while (*str && *str != ' ')
-{
+while (!is_delimiter(str[word_length]) && str[word_length] != '\0')
 word_length++;
-str++;
-}
 
 words[i] = malloc((word_length + 1) * sizeof(char));
 if (words[i] == NULL)
 {
-for (j = 0; j < i; j++)
+for (int j = 0; j < i; j++)
 free(words[j]);
 free(words);
 return (NULL);
 }
+
+for (int j = 0; j < word_length; j++)
+words[i][j] = str[j];
+words[i][word_length] = '\0';
+
+i++;
+str += word_length;
 }
 
 words[i] = NULL;
 return (words);
 }
 
-/**
-* fill_words - Fill the allocated words with characters from the input string.
-* @str: The input string.
-* @words: The array of words to be filled.
-*/
-static void fill_words(char *str, char **words)
-{
-int i;
-int word_length;
-
-i = 0;
-while (*str)
-{
-while (*str == ' ')
-str++;
-
-word_length = 0;
-while (*str && *str != ' ')
-{
-words[i][word_length] = *str;
-str++;
-word_length++;
-}
-
-words[i][word_length] = '\0';
-i++;
-}
-}
-
-/**
-* strtow - Split a string into words.
-* @str: The input string.
-*
-* Return: Pointer to an array of words, or NULL on failure.
-*/
 char **strtow(char *str)
 {
 int word_count;
@@ -130,7 +87,6 @@ words = allocate_words(str, word_count);
 if (words == NULL)
 return (NULL);
 
-fill_words(str, words);
 return (words);
 }
 
