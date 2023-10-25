@@ -34,7 +34,8 @@ return (count);
 static char **allocate_words(char *str, int word_count)
 {
 char **words;
-int i;
+int i,j;
+int word_length;
 
 words = malloc((word_count + 1) * sizeof(char *));
 if (words == NULL)
@@ -45,7 +46,7 @@ for (i = 0; i < word_count; i++)
 while (*str == ' ')
 str++;
 
-int word_length = 0;
+word_length = 0;
 while (*str && *str != ' ')
 {
 word_length++;
@@ -55,7 +56,7 @@ str++;
 words[i] = malloc((word_length + 1) * sizeof(char));
 if (words[i] == NULL)
 {
-for (int j = 0; j < i; j++)
+for (j = 0; j < i; j++)
 free(words[j]);
 free(words);
 return (NULL);
@@ -68,9 +69,10 @@ return (words);
 
 static void fill_words(char *str, char **words)
 {
-int i = 0;
+int i;
 int word_length;
 
+i = 0;
 while (*str)
 {
 while (*str == ' ')
@@ -91,18 +93,20 @@ i++;
 
 char **strtow(char *str)
 {
+int word_count;
+char **words;
+
 if (str == NULL || *str == '\0')
 return (NULL);
 
-int word_count = count_words(str);
+word_count = count_words(str);
 if (word_count == 0)
 return (NULL);
 
-char **words = allocate_words(str, word_count);
+**words = allocate_words(str, word_count);
 if (words == NULL)
 return (NULL);
 
 fill_words(str, words);
 return (words);
 }
-
