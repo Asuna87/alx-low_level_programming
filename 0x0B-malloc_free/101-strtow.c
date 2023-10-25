@@ -3,20 +3,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/**
-* count_words - counts the number of words in a string
-* @str: input string
-*
-* Return: number of words
-*/
 static int count_words(char *str)
 {
 int count = 0;
 bool in_word = false;
+int i;
 
-while (*str)
+for (i = 0; str[i] != '\0'; i++)
 {
-if (*str == ' ')
+if (str[i] == ' ')
 {
 if (in_word)
 {
@@ -28,8 +23,6 @@ else
 {
 in_word = true;
 }
-
-str++;
 }
 
 if (in_word)
@@ -38,20 +31,15 @@ count++;
 return (count);
 }
 
-/**
-* allocate_words - allocates memory for words in a string
-* @str: input string
-* @word_count: number of words
-*
-* Return: pointer to allocated memory for words
-*/
 static char **allocate_words(char *str, int word_count)
 {
-char **words = malloc((word_count + 1) * sizeof(char *));
+char **words;
+int i;
+
+words = malloc((word_count + 1) * sizeof(char *));
 if (words == NULL)
 return (NULL);
 
-int i;
 for (i = 0; i < word_count; i++)
 {
 while (*str == ' ')
@@ -78,20 +66,17 @@ words[i] = NULL;
 return (words);
 }
 
-/**
-* fill_words - fills words array with words from a string
-* @str: input string
-* @words: pointer to words array
-*/
 static void fill_words(char *str, char **words)
 {
 int i = 0;
+int word_length;
+
 while (*str)
 {
 while (*str == ' ')
 str++;
 
-int word_length = 0;
+word_length = 0;
 while (*str && *str != ' ')
 {
 words[i][word_length] = *str;
@@ -104,12 +89,6 @@ i++;
 }
 }
 
-/**
-* strtow - splits a string into words
-* @str: input string to split
-*
-* Return: pointer to an array of strings (words), or NULL on failure
-*/
 char **strtow(char *str)
 {
 if (str == NULL || *str == '\0')
