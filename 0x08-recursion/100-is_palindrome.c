@@ -43,10 +43,6 @@ return (check_palindrome(s, length));
 */
 int check_palindrome(char *s, int length)
 {
-/**
-* Base cases: if length is 1 or less,
-* or characters don't match, s is not a palindrome
-*/
 if (length <= 1)
 return (1); /* s is a palindrome */
 
