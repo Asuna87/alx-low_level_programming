@@ -87,13 +87,10 @@ return (NULL);
 
 for (j = 0; j < word_length; j++)
 words[i][j] = str[j];
-
 words[i][word_length] = '\0';
-
 i++;
 str += word_length;
 }
-
 words[i] = NULL;
 return (words);
 }
