@@ -33,7 +33,8 @@ return (dup);
 * @name: The name of the dog.
 * @age: The age of the dog.
 * @owner: The owner of the dog.
-* Return: Pointer to the newly created dog_t struct, or NULL if memory allocation fails.
+* Return: Pointer to the newly created dog_t struct,
+* or NULL if memory allocation fails.
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
