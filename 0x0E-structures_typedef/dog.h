@@ -3,9 +3,9 @@
 
 /**
 * struct dog - Defines a structure representing information about a dog.
-* @name: The dog's name.
-* @age: The dog's age.
-* @owner: The dog's owner.
+* @name: The dog s name.
+* @age: The dog s age.
+* @owner: The dog s owner.
 */
 typedef struct dog
 {
